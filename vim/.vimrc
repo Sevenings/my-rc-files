@@ -1,4 +1,4 @@
-" ====================
+    " ====================
 " Configurações Gerais
 " ====================
 set expandtab
@@ -13,7 +13,7 @@ filetype plugin indent on
 
 
 set background=dark
-colorscheme monokai
+colorscheme molokai
 
 set number relativenumber
 set cursorline
@@ -29,7 +29,27 @@ Plug 'honza/vim-snippets'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree'
+Plug 'vimwiki/vimwiki'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+"Plug 'soywod/iris.vim'
 call plug#end()
+
+
+
+
+" ==================================
+" Configurações do Iris Email Client
+" ==================================
+"" My account settings
+"let g:iris_name  = 'Lucas Vinícius de Lima Assis'
+"let g:iris_mail = 'lvlassis.2@gmail.com'
+"" IMAP connection settings
+"let g:iris_imap_host  = 'imap.gmail.com'
+"let g:iris_imap_port  = 993
+"" SMTP connection settings
+"let g:iris_smtp_host  = 'smtp.gmail.com' "Default to g:iris_imap_host
+"let g:iris_smtp_port  = 587
 
 " =======================
 " Configurações do VimTEX
@@ -48,6 +68,10 @@ let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 " ======================
 " Configurações NerdTree
 " ======================
+
+" Keybindings
+nnoremap <C-t> :NERDTreeToggle<CR>
+
 " Start NERDTree. If a file is specified, move the cursor to its window.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
@@ -58,14 +82,11 @@ autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTa
 " Open the existing NERDTree on each new tab.
 autocmd BufWinEnter * if &buftype != 'quickfix' && getcmdwintype() == '' | silent NERDTreeMirror | endif
 
+
 " =====================
 " Configurações Airline
 " =====================
 let g:airline_theme='deus'
-
-
-
-
 " ==================
 " FILETYPE SELECTION
 " ==================
@@ -101,6 +122,8 @@ command Textoff call TextModeOff()
 " ========
 " MAPPINGS
 " ========
+noremap <leader>y "+y
+noremap <leader>p "+p
 
 map <C-s> :w<CR>
 map <F6> :w<CR>:!clear<CR>:!make build<CR>
